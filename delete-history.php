@@ -1,5 +1,5 @@
 <?php
-require 'con.php'; // Database connection
+require 'conn.php'; // Database connection
 include 'session.php'; // Session management
 
 // Check if the user is logged in

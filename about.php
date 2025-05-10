@@ -1,5 +1,5 @@
 <?php
-include 'con.php';  // Include session.php to handle session protection
+include 'conn.php';  // Include session.php to handle session protection
 include 'session.php';  // Include session.php to handle session protection
 
 ?>

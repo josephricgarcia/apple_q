@@ -1,5 +1,5 @@
 <?php
-include 'con.php';
+include 'conn.php';
 include 'session.php';
 
 // Handle form submission

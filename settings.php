@@ -1,5 +1,5 @@
 <?php
-include 'con.php'; // Include your database connection file
+include 'conn.php'; // Include your database connection file
 include 'session.php'; // Include your session management file
 ?>
 

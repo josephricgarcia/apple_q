@@ -1,5 +1,5 @@
 <?php
-include 'con.php';  // Include the database connection and query logic
+include 'conn.php';  // Include the database connection and query logic
 include 'session.php';    // Start the session to access session variables
 
 // Check if the user is logged in

@@ -1,5 +1,5 @@
 <?php
-require 'con.php';
+require 'conn.php';
 require 'session.php';
 
 // Ensure the user is logged in

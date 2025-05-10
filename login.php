@@ -1,5 +1,5 @@
 <?php
-require 'con.php';
+require 'conn.php';
 include 'session.php';
 
 // Redirect if already logged in

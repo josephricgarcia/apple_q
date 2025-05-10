@@ -1,6 +1,6 @@
 <?php
 include 'session.php'; // Protect the page with session check
-include 'con.php';  // Database connection
+include 'conn.php';  // Database connection
 
 // Query the user data
 $sql = "SELECT * FROM user";

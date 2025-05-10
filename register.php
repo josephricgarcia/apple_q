@@ -1,5 +1,5 @@
 <?php
-require 'con.php';
+require 'conn.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize input

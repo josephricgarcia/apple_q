@@ -1,5 +1,5 @@
 <?php
-require 'con.php';
+require 'conn.php';
 include 'session.php';
 
 // Fetch apple quality prediction history for the logged-in user
