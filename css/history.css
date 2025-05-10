@@ -1,0 +1,305 @@
+
+        /* Body styles inherited from predict.css */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('images/apple.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        /* Container styles */
+        .container {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(240, 240, 245, 0.95));
+            backdrop-filter: blur(12px);
+            padding: clamp(2rem, 5vw, 2.5rem);
+            border-radius: 20px;
+            width: clamp(90%, 90vw, 1200px);
+            max-width: 1200px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 2rem auto;
+        }
+
+        /* Title */
+        .title {
+            font-size: clamp(2rem, 4vw, 2.25rem);
+            font-weight: 700;
+            color: #1A202C;
+            margin-bottom: 2rem;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        /* History table */
+        .history-table {
+            width: 100%;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #FFFFFF;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        th, td {
+            padding: 1.25rem;
+            text-align: center;
+            font-size: clamp(0.9375rem, 2vw, 1rem);
+            color: #2D3748;
+            white-space: nowrap;
+            line-height: 1.5;
+        }
+
+        th {
+            background: linear-gradient(90deg, #E2E8F0, #EDF2F7);
+            font-weight: 600;
+            color: #1A202C;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        td {
+            border-bottom: 1px solid #EDF2F7;
+        }
+
+        tr:hover {
+            background: #F9FAFB;
+            transition: background 0.2s ease;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .quality-good {
+            color: #2F855A;
+            font-weight: 600;
+            background: #E6FFEA;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        .quality-bad {
+            color: #9B2C2C;
+            font-weight: 600;
+            background: #FEE2E2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 6px;
+        }
+
+        /* Operation buttons */
+        .update-btn, .delete-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin: 0 0.25rem;
+        }
+
+        .update-btn {
+            background: #2B6CB0;
+            color: #FFFFFF;
+        }
+
+        .update-btn:hover {
+            background: #1A4971;
+            transform: translateY(-1px);
+        }
+
+        .delete-btn {
+            background: #E53E3E;
+            color: #FFFFFF;
+        }
+
+        .delete-btn:hover {
+            background: #C53030;
+            transform: translateY(-1px);
+        }
+
+        .delete-btn.loading, .update-btn.loading {
+            opacity: 0.7;
+            pointer-events: none;
+            position: relative;
+        }
+
+        .delete-btn.loading::after, .update-btn.loading::after {
+            content: '';
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid #FFFFFF;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Card layout for mobile */
+        .history-cards {
+            display: none;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .history-card {
+            background: #FFFFFF;
+            border-radius: 12px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+
+        .history-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .history-card div {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            font-size: clamp(0.9375rem, 2vw, 1rem);
+            color: #2D3748;
+            border-bottom: 1px solid #EDF2F7;
+        }
+
+        .history-card div:last-child {
+            border-bottom: none;
+        }
+
+        .history-card div span:first-child {
+            font-weight: 600;
+            color: #1A202C;
+        }
+
+        /* Button group */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .register-btn, .back-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-size: clamp(0.9375rem, 2.5vw, 1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            min-width: 150px;
+        }
+
+        .register-btn {
+            background: linear-gradient(90deg, #38A169, #48BB78);
+            color: #FFFFFF;
+            box-shadow: 0 4px 12px rgba(56, 161, 105, 0.3);
+        }
+
+        .register-btn:hover {
+            background: linear-gradient(90deg, #2F855A, #38A169);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(56, 161, 105, 0.4);
+        }
+
+        .back-btn {
+            background: transparent;
+            border: 2px solid #2B6CB0;
+            color: #2B6CB0;
+            box-shadow: none;
+        }
+
+        .back-btn:hover {
+            background: #2B6CB0;
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(43, 108, 176, 0.3);
+        }
+
+        /* Error message */
+        .error {
+            color: #9B2C2C;
+            background: #FED7D7;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: clamp(0.9375rem, 2vw, 1rem);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(155, 44, 44, 0.1);
+            animation: shake 0.3s ease-in-out;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25%, 75% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .history-table {
+                display: none;
+            }
+
+            .history-cards {
+                display: flex;
+            }
+
+            .container {
+                width: 95vw;
+                padding: 1.75rem;
+            }
+
+            .button-group {
+                flex-direction: row;
+                gap: 0.75rem;
+            }
+
+            .register-btn, .back-btn {
+                min-width: 120px;
+                padding: 0.75rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .history-card div {
+                font-size: clamp(0.875rem, 1.8vw, 0.9375rem);
+            }
+
+            .register-btn, .back-btn {
+                padding: 0.75rem 1rem;
+                font-size: clamp(0.875rem, 2.5vw, 0.9375rem);
+                min-width: 100%;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }

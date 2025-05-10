@@ -1,0 +1,258 @@
+/* GENERAL STYLES */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #FFD1DC, #FF9F80);
+    color: #333;
+}
+
+header {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+header img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+header h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 4rem;
+    font-weight: 800;
+    padding: 20px 40px;
+    border-radius: 20px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    background: rgba(255, 111, 97, 0.7);
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVIGATION */
+nav {
+    background: rgba(182, 95, 95, 0.7);
+    backdrop-filter: blur(6px);
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #444;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li a i {
+    margin-right: 8px;
+}
+
+nav ul li a:hover {
+    color: #FF4F5E;
+}
+
+/* MAIN CONTENT */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 30px;
+}
+
+.section1 {
+    flex: 3;
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.section1 h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #FF6F61;
+}
+
+/* BUTTON STYLING */
+.view-btn button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background: #FF6F61;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-btn button i {
+    margin-right: 8px;
+}
+
+.edit-btn, .delete-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+    background: #FF6F61;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-btn i, .delete-btn i {
+    margin-right: 8px;
+}
+
+.view-btn button:hover,
+.edit-btn:hover,
+.delete-btn:hover {
+    background: #FF4F5E;
+    transform: scale(1.05);
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background: #FFC5B5;
+    color: #333;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background: #FFEAE0;
+}
+
+/* SOCIAL MEDIA BOX */
+aside {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-left: 20px;
+    height: fit-content;
+}
+
+aside p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+aside .social-btn {
+    display: inline-block;
+    margin: 8px 0;
+    padding: 10px;
+    background: #FF9F80;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: background 0.3s;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+
+aside .social-btn:hover {
+    background: #FF6F61;
+}
+
+/* DETAILS AND FOOTER */
+details {
+    margin: 30px;
+    font-size: 1rem;
+}
+
+details summary {
+    cursor: pointer;
+    color: #FF6F61;
+    font-weight: 500;
+}
+
+details p {
+    margin-top: 10px;
+    color: #666;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    color: #000000;
+    background-color: #ffffff;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .section1, aside {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 8px 0;
+    }
+
+    .view-btn button {
+        width: 100%;
+        font-size: 1.1rem;
+    }
+}

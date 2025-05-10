@@ -1,0 +1,121 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body with gradient background */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #FFD1DC, #FF9F80);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+/* Form grid layout */
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+input[type="text"] {
+    padding-left: 10px;
+}
+
+.full-width {
+    grid-column: 1 / span 2;
+}
+
+/* Input group */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.input-icon {
+    position: relative;
+    left: 0.75rem; /* Reduced for better spacing */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #718096;
+}
+
+input {
+    width: 80%;
+    padding: 10px 10px 10px 2.5rem; /* Adjusted left padding to match icon position */
+    border: 1px solid #E2E8F0;
+    border-radius: 25px;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    background: #F7FAFC;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input:read-only {
+    background: #E2E8F0;
+    cursor: not-allowed;
+}
+
+input:focus {
+    outline: none;
+    border-color: #5A67D8;
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.1);
+}
+
+label {
+    font-size: clamp(0.75rem, 2vw, 0.8125rem);
+    color: #718096;
+    margin-bottom: 0.25rem;
+    text-align: left;
+    gap: 0.5rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    padding: 1rem 0;
+    background-color: white;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Error message */
+.error {
+    color: #9B2C2C;
+    background: #FED7D7;
+    padding: 0.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: clamp(0.75rem, 2vw, 0.8125rem);
+    animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25%, 75% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+}
+
+/* Gradient background for body */
+.gradient-bg {
+    background: linear-gradient(to right, #FFD1DC, #FF9F80);
+}
