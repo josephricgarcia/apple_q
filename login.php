@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Manila');
 require 'conn.php';
 include 'session.php';
 
@@ -21,12 +22,25 @@ if (isset($_POST["submit"])) {
 
     if ($result && mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
-        if (password_verify($password, $row["password"])) {
+        $storedPassword = $row["password"];
+        
+        // Standard password verification
+        if (password_verify($password, $storedPassword)) {
             // Store session data
             $_SESSION["id"] = $row["id"];
             $_SESSION["username"] = $row["username"];
             $_SESSION["firstname"] = $row["firstname"];
             $_SESSION["role"] = $row["role"];
+
+            // Log successful login
+            $username = $row["username"];
+            $date = date('Y-m-d');
+            $time_in = date('H:i:s');
+            $ip_address = $_SERVER['REMOTE_ADDR'];
+            $log_stmt = mysqli_prepare($dbhandle, "INSERT INTO user_log (username, date, time_in, ip_address) VALUES (?, ?, ?, ?)");
+            mysqli_stmt_bind_param($log_stmt, "ssss", $username, $date, $time_in, $ip_address);
+            mysqli_stmt_execute($log_stmt);
+            mysqli_stmt_close($log_stmt);
 
             // Redirect to home page
             header("Location: home.php");
@@ -63,7 +77,7 @@ if (isset($_POST["submit"])) {
             background: #fff;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,Scheduler 0,0.1);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             text-align: center;
             width: 400px;
             position: relative;
