@@ -98,55 +98,194 @@ $acidity = clip($acidity, $min_max['acidity'][0], $min_max['acidity'][1]);
 <head>
     <meta charset="UTF-8">
     <title>Predict Apple Quality</title>
-    <link rel="stylesheet" href="css/predict.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-red': {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #ffcccc 0%, #ff9999 100%);
+        }
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+            border-color: #f87171;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <h2 class="title">Predict Apple Quality</h2>
+<body class="gradient-bg min-h-screen">
 
-        <form action="predict.php" method="post" class="form">
-            <div class="input-group">
-                <label for="size">Size (-7.15 to 6)</label>
-                <input type="number" name="size" id="size" step="0.01" min="-7.15" max="6" required>
-            </div>
+<?php include 'header.php' ?>
 
-            <div class="input-group">
-                <label for="weight">Weight (-7.15 to 6)</label>
-                <input type="number" name="weight" id="weight" step="0.01" min="-7.15" max="6" required>
-            </div>
+<?php include 'navigation.php' ?>
+    <div class="container mx-auto px-4 max-w-4xl">
+        <!-- Form -->
+        <div class="bg-white rounded-2xl shadow-lg p-8">
+            <form action="predict.php" method="post" class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Size -->
+                    <div class="space-y-2">
+                        <label for="size" class="block text-sm font-medium text-gray-700">
+                            Size <span class="text-xs text-gray-500">(-7.15 to 6)</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" name="size" id="size" step="0.01" min="-7.15" max="6" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-ruler text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="input-group">
-                <label for="sweetness">Sweetness (-6.89 to 6)</label>
-                <input type="number" name="sweetness" id="sweetness" step="0.01" min="-6.89" max="6" required>
-            </div>
+                    <!-- Weight -->
+                    <div class="space-y-2">
+                        <label for="weight" class="block text-sm font-medium text-gray-700">
+                            Weight <span class="text-xs text-gray-500">(-7.15 to 6)</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" name="weight" id="weight" step="0.01" min="-7.15" max="6" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-weight text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="input-group">
-                <label for="crunchiness">Crunchiness (-6.06 to 8)</label>
-                <input type="number" name="crunchiness" id="crunchiness" step="0.01" min="-6.06" max="8" required>
-            </div>
+                    <!-- Sweetness -->
+                    <div class="space-y-2">
+                        <label for="sweetness" class="block text-sm font-medium text-gray-700">
+                            Sweetness <span class="text-xs text-gray-500">(-6.89 to 6)</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" name="sweetness" id="sweetness" step="0.01" min="-6.89" max="6" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-candy-cane text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="input-group">
-                <label for="juiciness">Juiciness (-5.96 to 7)</label>
-                <input type="number" name="juiciness" id="juiciness" step="0.01" min="-5.96" max="7" required>
-            </div>
+                    <!-- Crunchiness -->
+                    <div class="space-y-2">
+                        <label for="crunchiness" class="block text-sm font-medium text-gray-700">
+                            Crunchiness <span class="text-xs text-gray-500">(-6.06 to 8)</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" name="crunchiness" id="crunchiness" step="0.01" min="-6.06" max="8" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-cookie text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="input-group">
-                <label for="ripeness">Ripeness (-5.86 to 7)</label>
-                <input type="number" name="ripeness" id="ripeness" step="0.01" min="-5.86" max="7" required>
-            </div>
+                    <!-- Juiciness -->
+                    <div class="space-y-2">
+                        <label for="juiciness" class="block text-sm font-medium text-gray-700">
+                            Juiciness <span class="text-xs text-gray-500">(-5.96 to 7)</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" name="juiciness" id="juiciness" step="0.01" min="-5.96" max="7" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-tint text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="input-group">
-                <label for="acidity">Acidity (-7.01 to 7)</label>
-                <input type="number" name="acidity" id="acidity" step="0.01" min="-7.01" max="7" required>
-            </div>
+                    <!-- Ripeness -->
+                    <div class="space-y-2">
+                        <label for="ripeness" class="block text-sm font-medium text-gray-700">
+                            Ripeness <span class="text-xs text-gray-500">(-5.86 to 7)</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" name="ripeness" id="ripeness" step="0.01" min="-5.86" max="7" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-apple-alt text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="button-group">
-                <button type="submit" class="register-btn"><i class="fas fa-check"></i> Predict</button>
-                <button type="reset" class="clear-btn"><i class="fas fa-eraser"></i> Clear</button>
-                <a href="home.php" class="back-btn"><i class="fas fa-arrow-left"></i> Back</a>
+                    <!-- Acidity -->
+                    <div class="space-y-2">
+                        <label for="acidity" class="block text-sm font-medium text-gray-700">
+                            Acidity <span class="text-xs text-gray-500">(-7.01 to 7)</span>
+                        </label>
+                        <div class="relative">
+                            <input type="number" name="acidity" id="acidity" step="0.01" min="-7.01" max="7" required 
+                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-flask text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 pt-6">
+                    <button type="submit" class="flex-1 bg-apple-red-600 hover:bg-apple-red-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-check mr-2"></i>
+                        Predict Quality
+                    </button>
+                    <button type="reset" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-eraser mr-2"></i>
+                        Clear Form
+                    </button>
+                    <a href="home.php" class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Home
+                    </a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Info Section -->
+        <div class="bg-white rounded-2xl shadow-lg p-6 mt-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">How it works</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="text-center p-4">
+                    <div class="w-12 h-12 bg-apple-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-sliders-h text-apple-red-600"></i>
+                    </div>
+                    <h4 class="font-medium text-gray-800 mb-2">Enter Parameters</h4>
+                    <p class="text-sm text-gray-600">Fill in the apple characteristics using the form above</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-brain text-blue-600"></i>
+                    </div>
+                    <h4 class="font-medium text-gray-800 mb-2">AI Analysis</h4>
+                    <p class="text-sm text-gray-600">Our machine learning model analyzes the input data</p>
+                </div>
+                <div class="text-center p-4">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-chart-pie text-green-600"></i>
+                    </div>
+                    <h4 class="font-medium text-gray-800 mb-2">Get Results</h4>
+                    <p class="text-sm text-gray-600">Receive quality prediction with confidence score</p>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
 </body>
 </html>

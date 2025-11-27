@@ -60,132 +60,139 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Apple Quality Application</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Login Page</title>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-red': {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(to bottom, #ffcccc, #ff9999);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #ffcccc 0%, #ff9999 100%);
         }
-        .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            text-align: center;
-            width: 400px;
-            position: relative;
+        
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        #canvas-container {
-            width: 100%;
-            height: 200px;
-            position: relative;
-            z-index: 1;
+        
+        .input-focus:focus {
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+            border-color: #f87171;
         }
-        .title {
-            color: #333;
-            margin: 10px 0;
+        
+        .password-toggle {
+            transition: all 0.2s ease;
         }
-        .input-group {
-            margin: 15px 0;
-            text-align: left;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #333;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .password-container {
-            position: relative;
-        }
-        .eye-icon {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-        }
-        .forgot-password {
-            text-align: right;
-            margin: 10px 0;
-            color: #ff6666;
-            cursor: pointer;
-        }
-        .login-btn, .register-btn {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .login-btn {
-            background: #ff6666;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-        .login-btn:hover {
-            background: #ff4d4d;
-        }
-        .register-btn {
-            background: #ddd;
-            color: #333;
-        }
-        .register-btn:hover {
-            background: #ccc;
-        }
-        .or-text {
-            margin: 10px 0;
-            color: #777;
+        
+        .password-toggle:hover {
+            color: #ef4444;
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <div id="canvas-container"></div>
-        <h2 class="title">APPLE QUALITY</h2>
-        <h2 class="title">Application</h2>
-
-        <form action="" method="POST">
-            <div class="input-group">
-                <label>Username</label>
-                <input type="email" name="username1" placeholder="Enter email" autocomplete="off" required>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white rounded-2xl card-shadow overflow-hidden">
+        <!-- Header with 3D Apple Animation -->
+        <div class="relative bg-gradient-to-r from-apple-red-500 to-apple-red-600 p-6">
+            <div id="canvas-container" class="h-48 w-full flex items-center justify-center"></div>
+            <div class="text-center text-white mt-2">
+                <h1 class="text-2xl font-bold">APPLE QUALITY</h1>
+                <p class="text-apple-red-100 mt-1">Application</p>
             </div>
-
-            <div class="input-group">
-                <label>Password</label>
-                <div class="password-container">
-                    <input type="password" name="password" id="password" placeholder="Enter password" autocomplete="new-password" required>
-                    <span class="eye-icon" onclick="togglePasswordVisibility()">
-                        <i class="fas fa-eye" id="toggleIcon"></i>
-                    </span>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6 text-center">Sign in to your account</h2>
+            
+            <form action="" method="POST">
+                <div class="mb-4">
+                    <label for="username1" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <div class="relative">
+                        <input type="email" name="username1" id="username1" placeholder="Enter your email" autocomplete="off" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors">
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <i class="fas fa-envelope text-gray-400"></i>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <p class="forgot-password">Forgot Password?</p>
-
-            <button type="submit" name="submit" class="login-btn">Login</button>
-
-            <p class="or-text">or</p>
-
-            <button type="button" class="register-btn" onclick="location.href='register.php'">Register</button>
-        </form>
+                
+                <div class="mb-4">
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <div class="relative">
+                        <input type="password" name="password" id="password" placeholder="Enter your password" autocomplete="new-password" required 
+                               class="w-full px-4 py-3 border border-gray-300 rounded-lg input-focus focus:outline-none transition-colors pr-10">
+                        <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                            <button type="button" onclick="togglePasswordVisibility()" class="password-toggle">
+                                <i class="fas fa-eye text-gray-400" id="toggleIcon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center mb-6">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember" class="h-4 w-4 text-apple-red-600 border-gray-300 rounded focus:ring-apple-red-500">
+                        <label for="remember" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                    </div>
+                    <a href="#" class="text-sm font-medium text-apple-red-600 hover:text-apple-red-500 transition-colors">Forgot password?</a>
+                </div>
+                
+                <button type="submit" name="submit" class="w-full bg-apple-red-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-apple-red-700 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-apple-red-500">
+                    Sign In
+                </button>
+                
+                <div class="mt-6 text-center">
+                    <p class="text-sm text-gray-600">
+                        Don't have an account?
+                        <a href="register.php" class="font-medium text-apple-red-600 hover:text-apple-red-500 transition-colors">Create one now</a>
+                    </p>
+                </div>
+            </form>
+        </div>
     </div>
 
+    <!-- 3D Animation Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
+        // Password Toggle Function
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById("password");
+            const toggleIcon = document.getElementById("toggleIcon");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggleIcon.classList.remove("fa-eye");
+                toggleIcon.classList.add("fa-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                toggleIcon.classList.remove("fa-eye-slash");
+                toggleIcon.classList.add("fa-eye");
+            }
+        }
+
         // 3D Animation Setup
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, 400 / 200, 0.1, 1000);
@@ -304,21 +311,6 @@ if (isset($_POST["submit"])) {
             renderer.render(scene, camera);
         }
         animate();
-    </script>
-    <script>
-    function togglePasswordVisibility() {
-        const passwordInput = document.getElementById("password");
-        const toggleIcon = document.getElementById("toggleIcon");
-        if (passwordInput.type === "password") {
-            passwordInput.type = "text";
-            toggleIcon.classList.remove("fa-eye");
-            toggleIcon.classList.add("fa-eye-slash");
-        } else {
-            passwordInput.type = "password";
-            toggleIcon.classList.remove("fa-eye-slash");
-            toggleIcon.classList.add("fa-eye");
-        }
-    }
     </script>
 </body>
 </html>
